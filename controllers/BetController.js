@@ -26,7 +26,12 @@ const getAllBets = async (req, res) => {
 
 const getBetById = async (req, res) => {
   try {
-    let bet = await Bet.findByPk(req.params.bet_id)
+    let bet = await Bet.findByPk(req.params.bet_id, {
+      include: [
+        { model: User, attributes: ['username'] },
+        { model: Game, attributes: ['home_team', 'away_team'] }
+      ]
+    })
     res.send(bet)
   } catch (error) {
     throw error
