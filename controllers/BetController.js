@@ -1,4 +1,4 @@
-const { Bet } = require('../models')
+const { Bet, User, Game } = require('../models')
 const middleware = require('../middleware')
 
 const createBet = async (req, res) => {
@@ -12,7 +12,21 @@ const createBet = async (req, res) => {
 
 const getAllBets = async (req, res) => {
   try {
-    let bet = await Bet.findAll()
+    let bet = await Bet.findAll({
+      include: [
+        { model: User, attributes: ['username'] },
+        { model: Game, attributes: ['home_team', 'away_team'] }
+      ]
+    })
+    res.send(bet)
+  } catch (error) {
+    throw error
+  }
+}
+
+const getBetById = async (req, res) => {
+  try {
+    let bet = await Bet.findByPk(req.params.bet_id)
     res.send(bet)
   } catch (error) {
     throw error
@@ -21,5 +35,6 @@ const getAllBets = async (req, res) => {
 
 module.exports = {
   createBet,
-  getAllBets
+  getAllBets,
+  getBetById
 }
