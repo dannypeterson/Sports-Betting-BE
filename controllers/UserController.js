@@ -12,6 +12,36 @@ const register = async (req, res) => {
   }
 }
 
+const getAllUsers = async (req, res) => {
+  try {
+    let user = await User.findAll()
+    res.send(user)
+  } catch (error) {
+    throw error
+  }
+}
+
+const getUserById = async (req, res) => {
+  try {
+    let user = await User.findByPk(req.params.user_id)
+    res.send(user)
+  } catch (error) {
+    throw error
+  }
+}
+
+const deleteUser = async (req, res) => {
+  try {
+    await User.destroy({ where: { id: req.params.user_id } })
+    res.send({ msg: 'User Deleted!' })
+  } catch (error) {
+    throw error
+  }
+}
+
 module.exports = {
-  register
+  register,
+  getAllUsers,
+  getUserById,
+  deleteUser
 }

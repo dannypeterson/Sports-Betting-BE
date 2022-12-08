@@ -16,7 +16,7 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
 app.get('/', (req, res) => res.json({ msg: `Server Works!` }))
-app.use('/user', UserRouter)
+app.use('/users', UserRouter)
 app.use('/games', GameRouter)
 app.use('/bets', BetRouter)
 
