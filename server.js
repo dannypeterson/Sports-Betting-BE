@@ -4,6 +4,7 @@ const logger = require('morgan')
 // import routers here
 const UserRouter = require('./routes/UserRouter')
 const GameRouter = require('./routes/GameRouter')
+const BetRouter = require('./routes/BetRouter')
 
 const app = express()
 
@@ -17,5 +18,6 @@ app.use(express.urlencoded({ extended: true }))
 app.get('/', (req, res) => res.json({ msg: `Server Works!` }))
 app.use('/user', UserRouter)
 app.use('/games', GameRouter)
+app.use('/bets', BetRouter)
 
 app.listen(PORT, () => console.log(`Server Running On Port: ${PORT}`))

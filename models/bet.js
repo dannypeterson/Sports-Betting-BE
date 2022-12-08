@@ -22,7 +22,14 @@ module.exports = (sequelize, DataTypes) => {
           key: 'id'
         }
       },
-      game_id: DataTypes.INTEGER,
+      game_id: {
+        type: DataTypes.INTEGER,
+        onDelete: 'CASCADE',
+        references: {
+          model: 'games',
+          key: 'id'
+        }
+      },
       type: DataTypes.STRING,
       amount: DataTypes.INTEGER,
       payout: DataTypes.INTEGER
