@@ -38,8 +38,31 @@ const getBetById = async (req, res) => {
   }
 }
 
+const updateBet = async (req, res) => {
+  try {
+    let bet = await Bet.update(
+      { ...req.body },
+      { where: { id: req.params.bet_id }, returning: true }
+    )
+    res.send(bet)
+  } catch (error) {}
+}
+
+const deleteBet = async (req, res) => {
+  try {
+    await Bet.destroy({ where: { id: req.params.bet_id } })
+    res.send({
+      msg: 'Bet has been removed!'
+    })
+  } catch (error) {
+    throw error
+  }
+}
+
 module.exports = {
   createBet,
   getAllBets,
-  getBetById
+  getBetById,
+  updateBet,
+  deleteBet
 }
