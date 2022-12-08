@@ -10,6 +10,16 @@ const createBet = async (req, res) => {
   }
 }
 
+const getAllBets = async (req, res) => {
+  try {
+    let bet = await Bet.findAll()
+    res.send(bet)
+  } catch (error) {
+    throw error
+  }
+}
+
 module.exports = {
-  createBet
+  createBet,
+  getAllBets
 }
