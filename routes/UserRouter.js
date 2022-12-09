@@ -12,6 +12,13 @@ router.get(
   controller.checkSession
 )
 
+router.get(
+  '/session',
+  middleware.stripToken,
+  middleware.verifyToken,
+  controller.checkSession
+)
+
 router.get('/', controller.getAllUsers)
 router.get(
   '/:user_id',
