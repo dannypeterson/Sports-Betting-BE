@@ -16,7 +16,7 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       home_spread: {
-        type: Sequelize.INTEGER
+        type: Sequelize.JSON
       },
       away_team: {
         type: Sequelize.STRING
@@ -25,7 +25,13 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       away_spread: {
-        type: Sequelize.INTEGER
+        type: Sequelize.JSON
+      },
+      over: {
+        type: Sequelize.JSON
+      },
+      under: {
+        type: Sequelize.JSON
       },
       date: {
         type: Sequelize.STRING

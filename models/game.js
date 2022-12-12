@@ -15,10 +15,12 @@ module.exports = (sequelize, DataTypes) => {
     {
       home_team: DataTypes.STRING,
       home_ML: DataTypes.INTEGER,
-      home_spread: DataTypes.INTEGER,
+      home_spread: DataTypes.JSON,
       away_team: DataTypes.STRING,
       away_ML: DataTypes.INTEGER,
-      away_spread: DataTypes.INTEGER,
+      away_spread: DataTypes.JSON,
+      over: DataTypes.JSON,
+      under: DataTypes.JSON,
       date: DataTypes.STRING
     },
     {

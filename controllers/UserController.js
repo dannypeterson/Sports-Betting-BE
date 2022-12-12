@@ -1,4 +1,4 @@
-const { User } = require('../models')
+const { User, Bet, Game } = require('../models')
 const middleware = require('../middleware')
 
 const register = async (req, res) => {
@@ -24,7 +24,9 @@ const login = async (req, res) => {
     ) {
       let payload = {
         id: user.id,
-        email: user.email
+        username: user.username,
+        email: user.email,
+        balance: user.balance
       }
       let token = middleware.createToken(payload)
       return res.send({ user: payload, token })
@@ -51,7 +53,11 @@ const getAllUsers = async (req, res) => {
 
 const getUserById = async (req, res) => {
   try {
-    let user = await User.findByPk(req.params.user_id)
+    let user = await User.findByPk(req.params.user_id, {
+      include: [
+        { model: Bet, attributes: ['game_id', 'type', 'amount', 'payout'] }
+      ]
+    })
     res.send(user)
   } catch (error) {
     throw error
