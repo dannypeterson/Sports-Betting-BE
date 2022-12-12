@@ -12,11 +12,23 @@ module.exports = {
       type: {
         type: Sequelize.STRING
       },
-      amount: {
+      team: {
+        type: Sequelize.STRING
+      },
+      odds: {
+        type: Sequelize.STRING
+      },
+      wager: {
         type: Sequelize.INTEGER
       },
-      payout: {
+      points: {
+        type: Sequelize.STRING
+      },
+      to_win: {
         type: Sequelize.INTEGER
+      },
+      win_or_lose: {
+        type: Sequelize.STRING
       },
       createdAt: {
         allowNull: false,
@@ -35,7 +47,7 @@ module.exports = {
         }
       },
       game_id: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.STRING,
         onDelete: 'CASCASDE',
         refences: {
           model: 'games',

@@ -23,7 +23,7 @@ module.exports = (sequelize, DataTypes) => {
         }
       },
       game_id: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.STRING,
         onDelete: 'CASCADE',
         references: {
           model: 'games',
@@ -31,8 +31,12 @@ module.exports = (sequelize, DataTypes) => {
         }
       },
       type: DataTypes.STRING,
-      amount: DataTypes.INTEGER,
-      payout: DataTypes.INTEGER
+      team: DataTypes.STRING,
+      odds: DataTypes.STRING,
+      points: DataTypes.STRING,
+      wager: DataTypes.INTEGER,
+      to_win: DataTypes.INTEGER,
+      win_or_lose: DataTypes.STRING
     },
     {
       sequelize,
