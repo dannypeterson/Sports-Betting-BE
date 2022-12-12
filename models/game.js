@@ -1,5 +1,5 @@
 'use strict'
-const { Model } = require('sequelize')
+const { Model, DATE } = require('sequelize')
 module.exports = (sequelize, DataTypes) => {
   class Game extends Model {
     /**
@@ -21,7 +21,11 @@ module.exports = (sequelize, DataTypes) => {
       away_spread: DataTypes.JSON,
       over: DataTypes.JSON,
       under: DataTypes.JSON,
-      date: DataTypes.STRING
+      date: DataTypes.STRING,
+      id: {
+        type: DataTypes.STRING,
+        primaryKey: true
+      }
     },
     {
       sequelize,

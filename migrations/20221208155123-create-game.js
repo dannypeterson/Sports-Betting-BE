@@ -36,6 +36,10 @@ module.exports = {
       date: {
         type: Sequelize.STRING
       },
+      id: {
+        type: Sequelize.STRING,
+        primaryKey: true
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
