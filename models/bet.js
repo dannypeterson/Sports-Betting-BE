@@ -36,7 +36,7 @@ module.exports = (sequelize, DataTypes) => {
       points: DataTypes.STRING,
       wager: DataTypes.INTEGER,
       to_win: DataTypes.INTEGER,
-      win_or_lose: DataTypes.STRING
+      won: DataTypes.BOOLEAN
     },
     {
       sequelize,
