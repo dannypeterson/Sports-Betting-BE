@@ -18,7 +18,20 @@ const getGames = async (req, res) => {
   }
 }
 
+const updateGame = async (req, res) => {
+  try {
+    let game = await Game.update(
+      { ...req.body },
+      { where: { id: req.params.game_id }, returning: true }
+    )
+    res.send(game)
+  } catch (error) {
+    throw error
+  }
+}
+
 module.exports = {
   createGame,
-  getGames
+  getGames,
+  updateGame
 }
