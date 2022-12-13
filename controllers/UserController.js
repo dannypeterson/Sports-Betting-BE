@@ -55,7 +55,18 @@ const getUserById = async (req, res) => {
   try {
     let user = await User.findByPk(req.params.user_id, {
       include: [
-        { model: Bet, attributes: ['game_id', 'type', 'amount', 'payout'] }
+        {
+          model: Bet,
+          attributes: [
+            'game_id',
+            'type',
+            'odds',
+            'points',
+            'wager',
+            'to_win',
+            'win_or_lose'
+          ]
+        }
       ]
     })
     res.send(user)

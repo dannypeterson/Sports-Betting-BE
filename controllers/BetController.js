@@ -12,11 +12,24 @@ const createBet = async (req, res) => {
 
 const getAllBets = async (req, res) => {
   try {
+    let userId = req.params.user_id
     let bet = await Bet.findAll({
-      include: [
-        { model: User, attributes: ['username'] },
-        { model: Game, attributes: ['home_team', 'away_team'] }
-      ]
+      where: { user_id: userId },
+      include: {
+        model: Game,
+        attributes: [
+          'home_team',
+          'home_ML',
+          'home_spread',
+          'away_team',
+          'away_ML',
+          'away_spread',
+          'over',
+          'under',
+          'date',
+          'id'
+        ]
+      }
     })
     res.send(bet)
   } catch (error) {
@@ -29,7 +42,21 @@ const getBetById = async (req, res) => {
     let bet = await Bet.findByPk(req.params.bet_id, {
       include: [
         { model: User, attributes: ['username'] },
-        { model: Game, attributes: ['home_team', 'away_team'] }
+        {
+          model: Game,
+          attributes: [
+            'home_team',
+            'home_ML',
+            'home_spread',
+            'away_team',
+            'away_ML',
+            'away_spread',
+            'over',
+            'under',
+            'date',
+            'id'
+          ]
+        }
       ]
     })
     res.send(bet)
