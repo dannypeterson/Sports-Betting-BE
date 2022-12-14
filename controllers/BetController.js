@@ -12,6 +12,31 @@ const createBet = async (req, res) => {
 
 const getAllBets = async (req, res) => {
   try {
+    let bet = await Bet.findAll({
+      include: {
+        model: Game,
+        attributes: [
+          'home_team',
+          'home_ML',
+          'home_spread',
+          'away_team',
+          'away_ML',
+          'away_spread',
+          'over',
+          'under',
+          'date',
+          'id',
+          'inProgress'
+        ]
+      }
+    })
+    res.send(bet)
+  } catch (error) {
+    throw error
+  }
+}
+const getAllBetsByUser = async (req, res) => {
+  try {
     let userId = req.params.user_id
     let bet = await Bet.findAll({
       where: { user_id: userId },
@@ -90,8 +115,9 @@ const deleteBet = async (req, res) => {
 
 module.exports = {
   createBet,
-  getAllBets,
+  getAllBetsByUser,
   getBetById,
   updateBet,
-  deleteBet
+  deleteBet,
+  getAllBets
 }

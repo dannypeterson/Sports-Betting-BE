@@ -4,7 +4,9 @@ const middleware = require('../middleware')
 
 router.post('/', controller.createBet)
 
-router.get('/users/:user_id', controller.getAllBets)
+router.get('/users/:user_id', controller.getAllBetsByUser)
+
+router.get('/', controller.getAllBets)
 
 router.get('/:bet_id', controller.getBetById)
 
