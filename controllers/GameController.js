@@ -30,8 +30,21 @@ const updateGame = async (req, res) => {
   }
 }
 
+const updateAllGames = async (req, res) => {
+  try {
+    let game = await Game.update(
+      { ...req.body },
+      { where: { inProgress: false }, returning: true }
+    )
+    res.send(game)
+  } catch (error) {
+    throw error
+  }
+}
+
 module.exports = {
   createGame,
   getGames,
-  updateGame
+  updateGame,
+  updateAllGames
 }

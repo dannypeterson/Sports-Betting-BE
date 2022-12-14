@@ -22,6 +22,7 @@ module.exports = (sequelize, DataTypes) => {
       over: DataTypes.JSON,
       under: DataTypes.JSON,
       date: DataTypes.STRING,
+      inProgress: { type: DataTypes.BOOLEAN, defaultValue: true },
       id: {
         type: DataTypes.STRING,
         primaryKey: true

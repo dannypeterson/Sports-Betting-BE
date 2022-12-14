@@ -27,7 +27,8 @@ const getAllBets = async (req, res) => {
           'over',
           'under',
           'date',
-          'id'
+          'id',
+          'inProgress'
         ]
       }
     })
@@ -54,7 +55,8 @@ const getBetById = async (req, res) => {
             'over',
             'under',
             'date',
-            'id'
+            'id',
+            'inProgress'
           ]
         }
       ]
