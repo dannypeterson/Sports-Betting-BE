@@ -32,11 +32,13 @@ const updateGame = async (req, res) => {
 
 const updateAllGames = async (req, res) => {
   try {
-    let game = await Game.update(
-      { ...req.body },
-      { where: { inProgress: false }, returning: true }
-    )
-    res.send(game)
+    req.body.forEach(async (game) => {
+      await Game.update(game, {
+        where: { id: game.id, inProgress: true },
+        returning: true
+      })
+    })
+    res.send('success')
   } catch (error) {
     throw error
   }
