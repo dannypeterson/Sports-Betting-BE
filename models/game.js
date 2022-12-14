@@ -23,6 +23,8 @@ module.exports = (sequelize, DataTypes) => {
       under: DataTypes.JSON,
       date: DataTypes.STRING,
       inProgress: { type: DataTypes.BOOLEAN, defaultValue: true },
+      home_team_score: DataTypes.STRING,
+      away_team_score: DataTypes.STRING,
       id: {
         type: DataTypes.STRING,
         primaryKey: true
