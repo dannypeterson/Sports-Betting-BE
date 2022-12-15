@@ -30,6 +30,13 @@ const updateGame = async (req, res) => {
   }
 }
 
+const deleteGame = async () => {
+  try {
+    Game.destroy({ where: { id: req.params.game_id } })
+    res.send('game deleted')
+  } catch (error) {}
+}
+
 const updateAllGames = async (req, res) => {
   try {
     req.body.forEach(async (game) => {
@@ -48,5 +55,6 @@ module.exports = {
   createGame,
   getGames,
   updateGame,
-  updateAllGames
+  updateAllGames,
+  deleteGame
 }

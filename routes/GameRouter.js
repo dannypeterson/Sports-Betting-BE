@@ -4,7 +4,8 @@ const middleware = require('../middleware')
 
 router.post('/', controller.createGame)
 router.get('/', controller.getGames)
-router.put('/:game_id', controller.updateGame)
 router.put('/', controller.updateAllGames)
+router.put('/:game_id', controller.updateGame)
+router.put('/:game_id', controller.deleteGame)
 
 module.exports = router
