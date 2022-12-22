@@ -30,11 +30,13 @@ const updateGame = async (req, res) => {
   }
 }
 
-const deleteGame = async () => {
+const deleteGame = async (req, res) => {
   try {
-    Game.destroy({ where: { id: req.params.game_id } })
-    res.send('game deleted')
-  } catch (error) {}
+    await Game.destroy({ where: { id: req.params.game_id } })
+    res.send({ msg: 'game deleted' })
+  } catch (error) {
+    throw error
+  }
 }
 
 const updateAllGames = async (req, res) => {

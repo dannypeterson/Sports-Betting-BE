@@ -7,6 +7,7 @@ const register = async (req, res) => {
     let passwordDigest = await middleware.hashPassword(password)
     const user = await User.create({ username, email, passwordDigest })
     res.send(user)
+    console.log(user)
   } catch (error) {
     throw error
   }
@@ -75,6 +76,18 @@ const getUserById = async (req, res) => {
   }
 }
 
+const updateUser = async (req, res) => {
+  try {
+    let user = await User.update(
+      { ...req.body },
+      { where: { id: req.params.user_id }, returning: true }
+    )
+    res.send(user)
+  } catch (error) {
+    throw error
+  }
+}
+
 const deleteUser = async (req, res) => {
   try {
     await User.destroy({ where: { id: req.params.user_id } })
@@ -90,5 +103,6 @@ module.exports = {
   getUserById,
   deleteUser,
   login,
-  checkSession
+  checkSession,
+  updateUser
 }

@@ -20,6 +20,8 @@ router.get(
   controller.getUserById
 )
 
+router.put('/:user_id', controller.updateUser)
+
 router.delete('/:user_id', controller.deleteUser)
 
 module.exports = router
