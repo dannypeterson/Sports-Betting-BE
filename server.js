@@ -20,6 +20,4 @@ app.use('/users', UserRouter)
 app.use('/games', GameRouter)
 app.use('/bets', BetRouter)
 
-app.listen(PORT, '0.0.0.0', () =>
-  console.log(`Server Running On Port: ${PORT}`)
-)
+app.listen(PORT, () => console.log(`Server Running On Port: ${PORT}`))
